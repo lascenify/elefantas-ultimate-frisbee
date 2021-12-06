@@ -3,13 +3,11 @@ import config from "../../lib/config";
 
 type Props = {
   url: string;
-  title?: string;
   description?: string;
   image?: string;
 };
 export default function OpenGraphMeta({
   url,
-  title,
   description,
   image,
 }: Props) {
@@ -19,7 +17,7 @@ export default function OpenGraphMeta({
       <meta property="og:url" content={config.base_url + url} />
       <meta
         property="og:title"
-        content={title ? [title, config.site_title].join(" | ") : ""}
+        content={config.site_title}
       />
       <meta
         property="og:description"

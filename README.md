@@ -21,7 +21,6 @@ Or access the following demo site:
 
 ## Features
 
-- **Tagging**: organizes content by tags
 - **Author**: displays author names who write a post
 - **Pagination**: limits the number of posts per page
 - **CMS**: built with CMS to allow editors modifying content with the quickest way
@@ -62,7 +61,7 @@ All components use [styled-jsx](https://github.com/vercel/styled-jsx) and [css-m
 The directory tree containing the blog source code are described below:
 
 ```
-meta: yaml files defining metadata like authors or tags
+meta: yaml files defining metadata like authors
 public: images, favicons and other static assets
 src
 ├── assets: other assets using inside of components

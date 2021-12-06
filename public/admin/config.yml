@@ -1,13 +1,13 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: master
 media_folder: public/images
 public_folder: /images
-publish_mode: editorial_workflow
+locale: "es"
 
 collections:
   - name: "config"
-    label: "Config"
+    label: Configuración
     delete: false
     editor:
       preview: false
@@ -69,48 +69,54 @@ collections:
               - label: "Introduction"
                 name: "introduction"
                 widget: "text"
-      - name: "tags"
-        label: "Tags"
-        file: "meta/tags.yml"
-        description: "List of tags"
-        fields:
-          - name: tags
-            label: Tags
-            label_singular: "Tag"
-            widget: list
-            fields:
-              - label: "Slug"
-                name: "slug"
-                widget: "string"
-                hint: "The part of a URL identifies the tag"
-              - label: "Display Name"
-                name: "name"
-                widget: "string"
-                hint: "Tag name for displaying on the site"
+  - name: "players"
+    label: "Jugadoras"
+    label_singular: "Jugadora"
+    folder: "content/players/"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{number}}"
+    identifier_field: number
+    summary: "{{name}}"
+    fields:
+      - label: "Foto"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Nombre"
+        name: "name"
+        widget: "string"
+      - label: "Dorsal"
+        name: "number"
+        widget: "string"
+      - label: "Habilidades"
+        name: "string"
+        widget: "string"
+        required: false
 
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts/"
+  - name: "matches"
+    label: "Partidos"
+    label_singular: "Partido"
+    folder: "content/matches/"
     extension: "mdx"
     format: "frontmatter"
     create: true
     slug: "{{slug}}"
     identifier_field: slug
-    summary: "{{title}}"
+    summary: "{{date}}"
     fields:
       - label: "Slug"
         name: "slug"
         widget: "string"
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Publish Date"
+        hint: "The part of a URL identifies the match"
+      - label: "Fecha del partido"
         name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD"
         dateFormat: "YYYY-MM-DD"
         timeFormat: false
-      - label: Author
+      - label: Autor de la crónica
         name: "author"
         widget: relation
         collection: "meta"
@@ -120,22 +126,7 @@ collections:
         displayFields:
           - "authors.*.name"
         valueField: "authors.*.slug"
-      - label: Tags
-        label_singular: "Tag"
-        name: "tags"
-        widget: list
-        summary: "{{fields.tag}}"
-        field:
-          label: Tag
-          name: tag
-          widget: relation
-          collection: "meta"
-          file: "tags"
-          searchFields:
-            - "tags.*.name"
-          displayFields:
-            - "tags.*.name"
-          valueField: "tags.*.slug"
-      - label: "Body"
+      - label: Crónica
         name: "body"
         widget: "markdown"
+        required: false

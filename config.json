@@ -1,7 +1,7 @@
 {
-  "base_url": "https://wutali-nextjs-netlify-blog.netlify.app",
-  "site_title": "Next.js Netlify Blog",
-  "site_description": "Next.js blog template for Netlify",
+  "base_url": "https://elefantas-ultimate-frisbee.netlify.app/",
+  "site_title": "E.U.F",
+  "site_description": "Elefantas Ultimate Frisbee official page",
   "site_keywords": [
     {
       "keyword": "Next.js"
@@ -13,7 +13,7 @@
       "keyword": "React"
     }
   ],
-  "posts_per_page": 5,
+  "matches_per_page": 5,
   "twitter_account": "@my-account",
-  "github_account": "wutali"
+  "github_account": "lascenify"
 }

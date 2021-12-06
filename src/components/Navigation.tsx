@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Burger from "./Burger";
-import { useState } from "react";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Burger from './Burger';
+import { useState } from 'react';
 
 export default function Navigation() {
   const router = useRouter();
@@ -9,22 +9,26 @@ export default function Navigation() {
   return (
     <>
       <Burger active={active} onClick={() => setActive(!active)} />
-      <div className={"container " + (active ? "active" : "")}>
+      <div className={'container ' + (active ? 'active' : '')}>
         <ul>
           <li>
             <Link href="/">
-              <a className={router.pathname === "/" ? "active" : null}>about</a>
+              <a className={router.pathname === '/' ? 'active' : null}>inicio</a>
             </Link>
           </li>
           <li>
-            <Link href="/posts">
-              <a
-                className={
-                  router.pathname.startsWith("/posts") ? "active" : null
-                }
-              >
-                blog
-              </a>
+            <Link href="/matches">
+              <a className={router.pathname.startsWith('/matches') ? 'active' : null}>partidos</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/players">
+              <a className={router.pathname.startsWith('/players') ? 'active' : null}>jugadoras</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact">
+              <a className={router.pathname.startsWith('/contact') ? 'active' : null}>contacto</a>
             </Link>
           </li>
         </ul>
