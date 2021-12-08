@@ -15,5 +15,8 @@
   ],
   "matches_per_page": 5,
   "twitter_account": "@my-account",
-  "github_account": "lascenify"
+  "github_account": "lascenify",
+  "cloudinary_cloud_name":"elefantas-ultimate-frisbee",
+  "cloudinary_upload_preset": "my_unsigned_preset"
+
 }
