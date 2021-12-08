@@ -6,8 +6,6 @@ import Head from "next/head";
 
 type Props = {
   url: string;
-  title: string;
-  keywords?: string[];
   date: Date;
   author?: string;
   image?: string;
@@ -15,8 +13,6 @@ type Props = {
 };
 export default function JsonLdMeta({
   url,
-  title,
-  keywords,
   date,
   author,
   image,
@@ -29,8 +25,7 @@ export default function JsonLdMeta({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
           mainEntityOfPage: config.base_url + url,
-          headline: title,
-          keywords: keywords ? undefined : keywords.join(","),
+          headline: config.site_title,
           datePublished: formatISO(date),
           author: author,
           image: image,

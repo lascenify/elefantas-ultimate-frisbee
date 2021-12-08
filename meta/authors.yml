@@ -1,6 +1,8 @@
 authors:
-  - slug: wutali
-    name: Takahiro Fujiwara
-    introduction:
-      Co-founder and CTO at Fuller, Inc. / Software & Data Engineer /
-      Python / Golang / React
+  - slug: ascen
+    name: Ascen Salmerón
+    introduction: Co-founder and CTO at E.U.F / Software Engineer /
+      Open to work
+  - slug: pau
+    name: Pau Tortosa
+    introduction: Co-founder at E.U.F

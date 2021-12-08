@@ -9,60 +9,41 @@ import JsonLdMeta from "./meta/JsonLdMeta";
 import OpenGraphMeta from "./meta/OpenGraphMeta";
 import TwitterCardMeta from "./meta/TwitterCardMeta";
 import { SocialList } from "./SocialList";
-import TagButton from "./TagButton";
 import { getAuthor } from "../lib/authors";
-import { getTag } from "../lib/tags";
 
 type Props = {
-  title: string;
   date: Date;
   slug: string;
-  tags: string[];
   author: string;
-  description?: string;
   children: React.ReactNode;
 };
-export default function PostLayout({
-  title,
+export default function MatchLayout({
   date,
   slug,
   author,
-  tags,
-  description = "",
   children,
 }: Props) {
-  const keywords = tags.map(it => getTag(it).name);
   const authorName = getAuthor(author).name;
   return (
     <Layout>
       <BasicMeta
-        url={`/posts/${slug}`}
-        title={title}
-        keywords={keywords}
-        description={description}
+        url={`/matches/${slug}`}
       />
       <TwitterCardMeta
-        url={`/posts/${slug}`}
-        title={title}
-        description={description}
+        url={`/matches/${slug}`}
       />
       <OpenGraphMeta
-        url={`/posts/${slug}`}
-        title={title}
-        description={description}
+        url={`/matches/${slug}`}
       />
       <JsonLdMeta
-        url={`/posts/${slug}`}
-        title={title}
-        keywords={keywords}
+        url={`/matches/${slug}`}
         date={date}
         author={authorName}
-        description={description}
       />
       <div className={"container"}>
         <article>
           <header>
-            <h1>{title}</h1>
+            <h1>{date.toISOString()}</h1>
             <div className={"metadata"}>
               <div>
                 <Date date={date} />
@@ -73,13 +54,6 @@ export default function PostLayout({
             </div>
           </header>
           <div className={styles.content}>{children}</div>
-          <ul className={"tag-list"}>
-            {tags.map((it, i) => (
-              <li key={i}>
-                <TagButton tag={getTag(it)} />
-              </li>
-            ))}
-          </ul>
         </article>
         <footer>
           <div className={"social-list"}>
@@ -109,16 +83,6 @@ export default function PostLayout({
             h1 {
               margin: 0 0 0.5rem;
               font-size: 2.25rem;
-            }
-            .tag-list {
-              list-style: none;
-              text-align: right;
-              margin: 1.75rem 0 0 0;
-              padding: 0;
-            }
-            .tag-list li {
-              display: inline-block;
-              margin-left: 0.5rem;
             }
             .social-list {
               margin-top: 3rem;

@@ -3,10 +3,9 @@ import Head from "next/head";
 
 type Props = {
   url: string;
-  title?: string;
   description?: string;
 };
-export default function TwitterCardMeta({ url, title, description }: Props) {
+export default function TwitterCardMeta({ url, description }: Props) {
   return (
     <Head>
       <meta property="twitter:card" content="summary_large_image" />
@@ -14,7 +13,7 @@ export default function TwitterCardMeta({ url, title, description }: Props) {
       <meta property="twitter:url" content={config.base_url + url} />
       <meta
         property="twitter:title"
-        content={title ? [title, config.site_title].join(" | ") : ""}
+        content={config.site_title}
       />
       <meta
         property="twitter:description"

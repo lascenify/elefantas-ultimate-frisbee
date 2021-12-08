@@ -1,17 +1,17 @@
-import { PostContent } from "../lib/posts";
+import { MatchContent } from "../lib/matches";
 import Date from "./Date";
 import Link from "next/link";
 import { parseISO } from "date-fns";
 
 type Props = {
-  post: PostContent;
+  match: MatchContent;
 };
-export default function PostItem({ post }: Props) {
+export default function MatchItem({ match }: Props) {
   return (
-    <Link href={"/posts/" + post.slug}>
+    <Link href={"/matches/" + match.slug}>
       <a>
-        <Date date={parseISO(post.date)} />
-        <h2>{post.title}</h2>
+        <Date date={parseISO(match.date)} />
+        <h2>Partido jugado el {match.date.toString()}</h2>
         <style jsx>
           {`
             a {

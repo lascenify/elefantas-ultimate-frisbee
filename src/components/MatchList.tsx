@@ -1,26 +1,23 @@
 import React from "react";
-import { PostContent } from "../lib/posts";
-import PostItem from "./PostItem";
-import TagLink from "./TagLink";
+import { MatchContent } from "../lib/matches";
+import MatchItem from "./MatchItem";
 import Pagination from "./Pagination";
-import { TagContent } from "../lib/tags";
 
 type Props = {
-  posts: PostContent[];
-  tags: TagContent[];
+  matches: MatchContent[];
   pagination: {
     current: number;
     pages: number;
   };
 };
-export default function PostList({ posts, tags, pagination }: Props) {
+export default function MatchList({ matches, pagination }: Props) {
   return (
     <div className={"container"}>
-      <div className={"posts"}>
-        <ul className={"post-list"}>
-          {posts.map((it, i) => (
+      <div className={"matches"}>
+        <ul className={"match-list"}>
+          {matches.map((it, i) => (
             <li key={i}>
-              <PostItem post={it} />
+              <MatchItem match={it} />
             </li>
           ))}
         </ul>
@@ -28,18 +25,11 @@ export default function PostList({ posts, tags, pagination }: Props) {
           current={pagination.current}
           pages={pagination.pages}
           link={{
-            href: (page) => (page === 1 ? "/posts" : "/posts/page/[page]"),
-            as: (page) => (page === 1 ? null : "/posts/page/" + page),
+            href: (page) => (page === 1 ? "/matches" : "/matches/page/[page]"),
+            as: (page) => (page === 1 ? null : "/matches/page/" + page),
           }}
         />
       </div>
-      <ul className={"categories"}>
-        {tags.map((it, i) => (
-          <li key={i}>
-            <TagLink tag={it} />
-          </li>
-        ))}
-      </ul>
       <style jsx>{`
         .container {
           display: flex;
@@ -55,22 +45,16 @@ export default function PostList({ posts, tags, pagination }: Props) {
         li {
           list-style: none;
         }
-        .posts {
+        .matches {
           display: flex;
           flex-direction: column;
           flex: 1 1 auto;
         }
-        .posts li {
+        .matches li {
           margin-bottom: 1.5rem;
         }
-        .post-list {
+        .matches-list {
           flex: 1 0 auto;
-        }
-        .categories {
-          display: none;
-        }
-        .categories li {
-          margin-bottom: 0.75em;
         }
 
         @media (min-width: 769px) {

@@ -3,32 +3,30 @@ import matter from "gray-matter";
 import path from "path";
 import yaml from "js-yaml";
 
-const postsDirectory = path.join(process.cwd(), "content/posts");
+const matchesDirectory = path.join(process.cwd(), "content/matches");
 
-export type PostContent = {
+export type MatchContent = {
   readonly date: string;
-  readonly title: string;
   readonly slug: string;
-  readonly tags?: string[];
   readonly fullPath: string;
 };
 
-let postCache: PostContent[];
+let matchCache: MatchContent[];
 
-export function fetchPostContent(): PostContent[] {
-  if (postCache) {
-    return postCache;
+export function fetchMatchContent(): MatchContent[] {
+  if (matchCache) {
+    return matchCache;
   }
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames
+  // Get file names under /matches
+  const fileNames = fs.readdirSync(matchesDirectory);
+  const allMatchesData = fileNames
     .filter((it) => it.endsWith(".mdx"))
     .map((fileName) => {
       // Read markdown file as string
-      const fullPath = path.join(postsDirectory, fileName);
+      const fullPath = path.join(matchesDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
 
-      // Use gray-matter to parse the post metadata section
+      // Use gray-matter to parse the match metadata section
       const matterResult = matter(fileContents, {
         engines: {
           yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
@@ -36,8 +34,6 @@ export function fetchPostContent(): PostContent[] {
       });
       const matterData = matterResult.data as {
         date: string;
-        title: string;
-        tags: string[];
         slug: string;
         fullPath: string,
       };
@@ -54,29 +50,25 @@ export function fetchPostContent(): PostContent[] {
 
       return matterData;
     });
-  // Sort posts by date
-  postCache = allPostsData.sort((a, b) => {
+  // Sort matches by date
+  matchCache = allMatchesData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {
       return -1;
     }
   });
-  return postCache;
+  return matchCache;
 }
 
-export function countPosts(tag?: string): number {
-  return fetchPostContent().filter(
-    (it) => !tag || (it.tags && it.tags.includes(tag))
-  ).length;
+export function countMatches(): number {
+  return fetchMatchContent().length;
 }
 
-export function listPostContent(
+export function listMatchContent(
   page: number,
-  limit: number,
-  tag?: string
-): PostContent[] {
-  return fetchPostContent()
-    .filter((it) => !tag || (it.tags && it.tags.includes(tag)))
+  limit: number
+): MatchContent[] {
+  return fetchMatchContent()
     .slice((page - 1) * limit, page * limit);
 }

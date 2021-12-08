@@ -1,62 +1,66 @@
-import Layout from "../components/Layout";
-import BasicMeta from "../components/meta/BasicMeta";
-import OpenGraphMeta from "../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../components/meta/TwitterCardMeta";
-import { SocialList } from "../components/SocialList";
+import Layout from '../components/Layout';
+import BasicMeta from '../components/meta/BasicMeta';
+import OpenGraphMeta from '../components/meta/OpenGraphMeta';
+import TwitterCardMeta from '../components/meta/TwitterCardMeta';
+import HomeCarousel from '../components/HomeCarousel';
+import { CloudinaryContext } from 'cloudinary-react';
+import config from '../lib/config';
 
+const { cloudinary_cloud_name, cloudinary_upload_preset } = config;
 export default function Index() {
   return (
-    <Layout>
-      <BasicMeta url={"/"} />
-      <OpenGraphMeta url={"/"} />
-      <TwitterCardMeta url={"/"} />
-      <div className="container">
-        <div>
-          <h1>
-            Hi, We're Next.js & Netlify<span className="fancy">.</span>
-          </h1>
-          <span className="handle">@nextjs-netlify-blog</span>
-          <h2>A blog template with Next.js and Netlify.</h2>
-          <SocialList />
-        </div>
-      </div>
-      <style jsx>{`
-        .container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 1 1 auto;
-          padding: 0 1.5rem;
-        }
-        h1 {
-          font-size: 2.5rem;
-          margin: 0;
-          font-weight: 500;
-        }
-        h2 {
-          font-size: 1.75rem;
-          font-weight: 400;
-          line-height: 1.25;
-        }
-        .fancy {
-          color: #15847d;
-        }
-        .handle {
-          display: inline-block;
-          margin-top: 0.275em;
-          color: #9b9b9b;
-          letter-spacing: 0.05em;
-        }
+    <CloudinaryContext cloudName={cloudinary_cloud_name} uploadPreset={cloudinary_upload_preset}>
+      <Layout>
+        <BasicMeta url={'/'} />
+        <OpenGraphMeta url={'/'} />
+        <TwitterCardMeta url={'/'} />
+        <div className="container">
+            <h1>
+              Hola! Benvinguda a la pàgina oficial de EUF
+              <br />
+              <span className="fancy"> Elefantas Ultimate Frisbee </span>
+            </h1>
+          <h4>Solo asuntos ultimate, por favor.</h4>
 
-        @media (min-width: 769px) {
+          <HomeCarousel/>
+        </div>
+        <style jsx>{`
+          .container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding-left: 2rem;
+          }
           h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 500;
           }
           h2 {
-            font-size: 2.25rem;
+            font-size: 1.75rem;
+            font-weight: 400;
+            line-height: 1.25;
           }
-        }
-      `}</style>
-    </Layout>
+          .fancy {
+            color: #15847d;
+          }
+          .handle {
+            display: inline-block;
+            margin-top: 0.275em;
+            color: #9b9b9b;
+            letter-spacing: 0.05em;
+          }
+
+          @media (min-width: 769px) {
+            h1 {
+              font-size: 3rem;
+            }
+            h2 {
+              font-size: 2.25rem;
+            }
+          }
+        `}</style>
+      </Layout>
+    </CloudinaryContext>
   );
 }

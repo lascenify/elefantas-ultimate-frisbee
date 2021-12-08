@@ -1,4 +1,5 @@
-module.exports = ({
+const withImages = require('next-images')
+module.exports = withImages({
   pageExtensions: ["tsx"],
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push(
@@ -14,6 +15,12 @@ module.exports = ({
         },
       ]
     );
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
     return config;
   },
 });
