@@ -11,7 +11,8 @@ export default function MatchItem({ match }: Props) {
     <Link href={"/matches/" + match.slug}>
       <a>
         <Date date={parseISO(match.date)} />
-        <h2>Partido jugado el {match.date.toString()}</h2>
+        <h2>Partit jugat el {match.date.toString()}</h2>
+        <h4>Resultat: {match.blueTeam?.score || 0} - {match.redTeam?.score || 0} </h4>
         <style jsx>
           {`
             a {

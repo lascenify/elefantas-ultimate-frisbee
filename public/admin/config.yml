@@ -91,7 +91,7 @@ collections:
         name: "number"
         widget: "string"
       - label: "Habilidades"
-        name: "string"
+        name: "description"
         widget: "string"
         required: false
 
@@ -130,3 +130,26 @@ collections:
         name: "body"
         widget: "markdown"
         required: false
+      - label: Equipo rojo
+        name: "redTeam"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Jugadoras"
+            name: "players"
+            widget: "markdown"
+          - label: "Anotaciones"
+            name: "goals"
+            widget: "number"
+      - label: Equipo azul
+        name: "blueTeam"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Jugadoras"
+            name: "players"
+            widget: "markdown"
+          - label: "Anotaciones"
+            name: "goals"
+            widget: "number"
+

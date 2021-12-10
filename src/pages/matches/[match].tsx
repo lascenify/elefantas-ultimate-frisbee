@@ -3,7 +3,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { MdxRemote } from "next-mdx-remote/types";
 import hydrate from "next-mdx-remote/hydrate";
 import matter from "gray-matter";
-import { fetchMatchContent } from "../../lib/matches";
+import { fetchMatchContent, Team } from "../../lib/matches";
 import fs from "fs";
 import yaml from "js-yaml";
 import { parseISO } from 'date-fns';
@@ -17,6 +17,8 @@ export type Props = {
   dateString: string;
   slug: string;
   author: string;
+  redTeam: Team,
+  blueTeam: Team,
   source: MdxRemote.Source;
 };
 
@@ -31,14 +33,19 @@ export default function Match({
   dateString,
   slug,
   author,
+  redTeam,
+  blueTeam,
   source,
 }: Props) {
   const content = hydrate(source, { components })
+  console.log("equipo en match.tsx", redTeam)
   return (
     <MatchLayout
       date={parseISO(dateString)}
       slug={slug}
       author={author}
+      redTeam={redTeam}
+      blueTeam={blueTeam}
     >
       {content}
     </MatchLayout>
@@ -65,6 +72,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       dateString: data.date,
       slug: data.slug,
       author: data.author,
+      blueTeam: data.blueTeam,
+      redTeam: data.redTeam,
       source: mdxSource
     },
   };

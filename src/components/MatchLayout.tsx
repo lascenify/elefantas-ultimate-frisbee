@@ -8,22 +8,36 @@ import BasicMeta from "./meta/BasicMeta";
 import JsonLdMeta from "./meta/JsonLdMeta";
 import OpenGraphMeta from "./meta/OpenGraphMeta";
 import TwitterCardMeta from "./meta/TwitterCardMeta";
-import { SocialList } from "./SocialList";
 import { getAuthor } from "../lib/authors";
-
+import SoccerLineUp from 'react-soccer-lineup';
+import {getMatchLineUp, Team} from '../lib/matches';
 type Props = {
   date: Date;
   slug: string;
   author: string;
+  blueTeam: Team,
+  redTeam: Team,
   children: React.ReactNode;
 };
+
 export default function MatchLayout({
   date,
   slug,
   author,
+  blueTeam,
+  redTeam,
   children,
 }: Props) {
   const authorName = getAuthor(author).name;
+  const homeTeam = {
+    color: "lightblue",
+    squad: getMatchLineUp(blueTeam?.players)
+  };
+  const awayTeam = {
+    color: "red",
+    squad: getMatchLineUp(redTeam?.players)
+  };
+
   return (
     <Layout>
       <BasicMeta
@@ -43,7 +57,7 @@ export default function MatchLayout({
       <div className={"container"}>
         <article>
           <header>
-            <h1>{date.toISOString()}</h1>
+            <h1> Partido jugado el {date.toLocaleDateString()}</h1>
             <div className={"metadata"}>
               <div>
                 <Date date={date} />
@@ -54,11 +68,15 @@ export default function MatchLayout({
             </div>
           </header>
           <div className={styles.content}>{children}</div>
+          <SoccerLineUp
+            size={ "small" }
+            color={ "lightseagreen" }
+            pattern={"squares"}
+            homeTeam={homeTeam}
+            awayTeam={awayTeam}
+            />
         </article>
         <footer>
-          <div className={"social-list"}>
-            <SocialList />
-          </div>
           <Copyright />
         </footer>
       </div>
@@ -83,10 +101,6 @@ export default function MatchLayout({
             h1 {
               margin: 0 0 0.5rem;
               font-size: 2.25rem;
-            }
-            .social-list {
-              margin-top: 3rem;
-              text-align: center;
             }
 
             @media (min-width: 769px) {
@@ -199,4 +213,5 @@ export default function MatchLayout({
       </style>
     </Layout>
   );
+
 }
