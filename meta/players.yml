@@ -1,6 +1,6 @@
 authors:
   - slug: minerva
-    name: Minerva Amorós
+    name: Minerva
     number: 2
     description: uwu qué buena
   - slug: ashley
@@ -8,7 +8,7 @@ authors:
     number: 3
     description: uwu qué buena
   - slug: ascen
-    name: Ascen Salmerón
+    name: Ascen
     number: 4
     description: uwu qué buena
   - slug: dani
@@ -28,7 +28,7 @@ authors:
     number: 10
     description: uwu qué buena
   - slug: pau
-    name: Pau Tortosa
+    name: Pau
     number: 11
     description: uwu qué buena
   - slug: andres

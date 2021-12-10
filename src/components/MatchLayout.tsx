@@ -29,14 +29,16 @@ export default function MatchLayout({
   children,
 }: Props) {
   const authorName = getAuthor(author).name;
-  const homeTeam = {
+  const blueTeamLineUp = {
     color: "lightblue",
     squad: getMatchLineUp(blueTeam?.players)
   };
-  const awayTeam = {
+  const redTeamLineUp = {
     color: "red",
     squad: getMatchLineUp(redTeam?.players)
   };
+  const redTeamPlayers = redTeam.players.map((player)=> `${player.name} (${player.number})`).join(', ')
+  const blueTeamPlayers = blueTeam.players.map((player)=> `${player.name} (${player.number})`).join(', ')
 
   return (
     <Layout>
@@ -67,14 +69,23 @@ export default function MatchLayout({
               </div>
             </div>
           </header>
-          <div className={styles.content}>{children}</div>
           <SoccerLineUp
-            size={ "small" }
+            size={ "responsive" }
             color={ "lightseagreen" }
             pattern={"squares"}
-            homeTeam={homeTeam}
-            awayTeam={awayTeam}
-            />
+            homeTeam={redTeamLineUp}
+            awayTeam={blueTeamLineUp}
+          />
+          <div className="score-container">
+            <h1>{redTeam.score} - {blueTeam.score}</h1>
+          </div>
+
+          <h2>Equipo rojo: </h2>
+          <h3>{redTeamPlayers}</h3>
+          <h2>Equipo azul: </h2>
+          <h3>{blueTeamPlayers}</h3>
+
+          <div className={styles.content}>{children}</div>
         </article>
         <footer>
           <Copyright />
@@ -94,6 +105,7 @@ export default function MatchLayout({
             .metadata div {
               display: inline-block;
               margin-right: 0.5rem;
+              margin-bottom: 1.5rem;
             }
             article {
               flex: 1 0 auto;
@@ -101,6 +113,12 @@ export default function MatchLayout({
             h1 {
               margin: 0 0 0.5rem;
               font-size: 2.25rem;
+            }
+            .score-container {
+              text-align: center;
+              border-style: solid;
+              border-width: 3px;
+              margin-top: 1.5rem;
             }
 
             @media (min-width: 769px) {
