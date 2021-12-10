@@ -17,7 +17,7 @@ export default function MatchList({ matches, pagination }: Props) {
   return (
     <div className={"container"}>
       <div className={"headerContainer"}>
-        <Image className={"image"} width="200" responsive cloudName={cloudinary_cloud_name}  uploadPreset={cloudinary_upload_preset} publicId="/logo.png" />
+        <Image secure="true" className={"image"} width="200" responsive cloudName={cloudinary_cloud_name}  uploadPreset={cloudinary_upload_preset} publicId="/logo.png" />
         <h2> La millor gent, el millor post-partit, els pitjors esguinces.
           <br/>
           <span className="fancy"> Elefantas, </span>ara més animals que mai!</h2>
