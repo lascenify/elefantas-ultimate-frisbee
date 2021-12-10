@@ -7,16 +7,16 @@ export default function HomeCarousel() {
     <div className="carousel-wrapper">
       <Carousel infiniteLoop useKeyboardArrows autoPlay >
         <div>
-          <Image publicId="/home/1.jpg" />
+          <Image secure="true" publicId="/home/1.jpg" />
         </div>
         <div>
-          <Image publicId="/home/2.jpg" />
+          <Image secure="true" publicId="/home/2.jpg" />
         </div>
         <div>
-          <Image  publicId="/home/3.jpg" />
+          <Image secure="true" publicId="/home/3.jpg" />
         </div>
         <div>
-          <Image  publicId="/home/4.jpg" />
+          <Image secure="true" publicId="/home/4.jpg" />
         </div>
       </Carousel>
 

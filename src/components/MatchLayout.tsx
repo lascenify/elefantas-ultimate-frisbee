@@ -8,22 +8,38 @@ import BasicMeta from "./meta/BasicMeta";
 import JsonLdMeta from "./meta/JsonLdMeta";
 import OpenGraphMeta from "./meta/OpenGraphMeta";
 import TwitterCardMeta from "./meta/TwitterCardMeta";
-import { SocialList } from "./SocialList";
 import { getAuthor } from "../lib/authors";
-
+import SoccerLineUp from 'react-soccer-lineup';
+import {getMatchLineUp, Team} from '../lib/matches';
 type Props = {
   date: Date;
   slug: string;
   author: string;
+  blueTeam: Team,
+  redTeam: Team,
   children: React.ReactNode;
 };
+
 export default function MatchLayout({
   date,
   slug,
   author,
+  blueTeam,
+  redTeam,
   children,
 }: Props) {
   const authorName = getAuthor(author).name;
+  const blueTeamLineUp = {
+    color: "lightblue",
+    squad: getMatchLineUp(blueTeam?.players)
+  };
+  const redTeamLineUp = {
+    color: "red",
+    squad: getMatchLineUp(redTeam?.players)
+  };
+  const redTeamPlayers = redTeam.players.map((player)=> `${player.name} (${player.number})`).join(', ')
+  const blueTeamPlayers = blueTeam.players.map((player)=> `${player.name} (${player.number})`).join(', ')
+
   return (
     <Layout>
       <BasicMeta
@@ -43,7 +59,7 @@ export default function MatchLayout({
       <div className={"container"}>
         <article>
           <header>
-            <h1>{date.toISOString()}</h1>
+            <h1> Partido jugado el {date.toLocaleDateString()}</h1>
             <div className={"metadata"}>
               <div>
                 <Date date={date} />
@@ -53,12 +69,25 @@ export default function MatchLayout({
               </div>
             </div>
           </header>
+          <SoccerLineUp
+            size={ "responsive" }
+            color={ "lightseagreen" }
+            pattern={"squares"}
+            homeTeam={redTeamLineUp}
+            awayTeam={blueTeamLineUp}
+          />
+          <div className="score-container">
+            <h1>{redTeam.score} - {blueTeam.score}</h1>
+          </div>
+
+          <h2>Equipo rojo: </h2>
+          <h3>{redTeamPlayers}</h3>
+          <h2>Equipo azul: </h2>
+          <h3>{blueTeamPlayers}</h3>
+
           <div className={styles.content}>{children}</div>
         </article>
         <footer>
-          <div className={"social-list"}>
-            <SocialList />
-          </div>
           <Copyright />
         </footer>
       </div>
@@ -76,6 +105,7 @@ export default function MatchLayout({
             .metadata div {
               display: inline-block;
               margin-right: 0.5rem;
+              margin-bottom: 1.5rem;
             }
             article {
               flex: 1 0 auto;
@@ -84,9 +114,11 @@ export default function MatchLayout({
               margin: 0 0 0.5rem;
               font-size: 2.25rem;
             }
-            .social-list {
-              margin-top: 3rem;
+            .score-container {
               text-align: center;
+              border-style: solid;
+              border-width: 3px;
+              margin-top: 1.5rem;
             }
 
             @media (min-width: 769px) {
@@ -199,4 +231,5 @@ export default function MatchLayout({
       </style>
     </Layout>
   );
+
 }
