@@ -26,11 +26,6 @@ export default function Navigation() {
               <a className={router.pathname.startsWith('/players') ? 'active' : null}>jugadoras</a>
             </Link>
           </li>
-          <li>
-            <Link href="/contact">
-              <a className={router.pathname.startsWith('/contact') ? 'active' : null}>contacto</a>
-            </Link>
-          </li>
         </ul>
         <style jsx>
           {`

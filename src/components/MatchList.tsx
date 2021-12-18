@@ -17,10 +17,9 @@ export default function MatchList({ matches, pagination }: Props) {
   return (
     <div className={"container"}>
       <div className={"headerContainer"}>
-        <Image secure="true" className={"image"} width="200" responsive cloudName={cloudinary_cloud_name}  uploadPreset={cloudinary_upload_preset} publicId="/logo.png" />
-        <h2> La millor gent, el millor post-partit, els pitjors esguinces.
-          <br/>
-          <span className="fancy"> Elefantas, </span>ara més animals que mai!</h2>
+       <h2> Partits jugats </h2>
+       <Image secure="true" className={"image"} width="100" responsive cloudName={cloudinary_cloud_name}  uploadPreset={cloudinary_upload_preset} publicId="/frisbee-front.png" />
+
       </div>
       <div className={"matches"}>
         <ul className={"match-list"}>
@@ -72,10 +71,9 @@ export default function MatchList({ matches, pagination }: Props) {
           display: flex;
           flex-direction: row;
           align-items: center;
+          gap: 1.5rem;
+          padding-bottom: 2rem;
         }
-        .fancy {
-            color: #15847d;
-          }
         @media (min-width: 769px) {
           .categories {
             display: block;

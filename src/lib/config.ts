@@ -6,6 +6,7 @@ type Config = {
   readonly site_description: string;
   readonly site_keywords: { keyword: string }[];
   readonly matches_per_page: number;
+  readonly players_per_page: number;
   readonly twitter_account: string;
   readonly github_account: string;
   readonly cloudinary_cloud_name: string;

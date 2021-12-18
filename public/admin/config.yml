@@ -80,10 +80,6 @@ collections:
     identifier_field: number
     summary: "{{name}}"
     fields:
-      - label: "Foto"
-        name: "image"
-        widget: "image"
-        required: false
       - label: "Nombre"
         name: "name"
         widget: "string"

@@ -14,6 +14,7 @@
     }
   ],
   "matches_per_page": 5,
+  "players_per_page": 20,
   "twitter_account": "@my-account",
   "github_account": "lascenify",
   "cloudinary_cloud_name":"elefantas-ultimate-frisbee",
