@@ -17,11 +17,6 @@ export default function Navigation() {
             </Link>
           </li>
           <li>
-            <Link href="/matches">
-              <a className={router.pathname.startsWith('/matches') ? 'active' : null}>partidos</a>
-            </Link>
-          </li>
-          <li>
             <Link href="/players">
               <a className={router.pathname.startsWith('/players') ? 'active' : null}>jugadoras</a>
             </Link>

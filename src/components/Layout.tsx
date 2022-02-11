@@ -1,5 +1,7 @@
 import Head from "next/head";
+import Copyright from "./Copyright";
 import Navigation from "./Navigation";
+import { SocialList } from "./SocialList";
 
 type Props = {
   children: React.ReactNode;
@@ -18,6 +20,10 @@ export default function Layout({ children }: Props) {
         <Navigation />
       </nav>
       <main>{children}</main>
+      <footer>
+        <Copyright />
+        <SocialList/>
+      </footer>
       <style jsx>
         {`
           .root {

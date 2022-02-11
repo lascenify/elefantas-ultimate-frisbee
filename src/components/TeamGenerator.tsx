@@ -2,7 +2,7 @@ import React from "react";
 import {  generateTeams, GeneratorPlayer } from "../lib/team-generator";
 import generator from '../../content/generator.json';
 import SoccerLineUp from 'react-soccer-lineup';
-import { getMatchLineUp } from "../lib/matches";
+import { getMatchLineUp } from "../lib/team-generator";
 import { Player } from "../lib/players";
 
 export default class TeamGenerator extends React.Component {

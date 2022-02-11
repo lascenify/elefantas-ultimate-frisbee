@@ -2,7 +2,7 @@ import { countPlayers, listPlayersContent, PlayerContent } from "../../lib/playe
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
+import InstagramCardMeta from "../../components/meta/InstagramCardMeta";
 import { GetStaticProps } from "next";
 import config from "../../lib/config";
 import PlayerList from "../../components/PlayerList";
@@ -20,7 +20,7 @@ export default function Index({ players, pagination }: Props) {
     <Layout>
       <BasicMeta url={url}/>
       <OpenGraphMeta url={url} />
-      <TwitterCardMeta url={url} />
+      <InstagramCardMeta url={url} />
       <PlayerList players={players} pagination={pagination}></PlayerList>
     </Layout>
   );

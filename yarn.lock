@@ -5651,16 +5651,6 @@
     "react-is" "^16.8.6"
     "scheduler" "^0.19.1"
 
-"react-twitter-embed@^3.0.3":
-  "integrity" "sha512-kF1Srlb1TqnZUqKA0FC4I/E+m+RUBCMZeU20hDRzmYLAjR1EA/6tr/PMZ22s7rd6wjQpIBLXNZjt0rfUpY8Chw=="
-  "resolved" "https://registry.npmjs.org/react-twitter-embed/-/react-twitter-embed-3.0.3.tgz"
-  "version" "3.0.3"
-  dependencies:
-    "enzyme-adapter-react-16" "^1.11.0"
-    "exenv" "^1.2.2"
-    "react-proptype-conditional-require" "^1.0.4"
-    "scriptjs" "^2.5.9"
-
 "react-youtube@^7.13.1":
   "integrity" "sha512-b++TLHmHDpd0ZBS1wcbYabbuchU+W4jtx5A2MUQX0BINNKKsaIQX29sn/aLvZ9v5luwAoceia3VGtyz9blaB9w=="
   "resolved" "https://registry.npmjs.org/react-youtube/-/react-youtube-7.13.1.tgz"

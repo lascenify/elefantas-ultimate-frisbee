@@ -7,7 +7,6 @@ import yaml from "js-yaml";
 import hydrate from "next-mdx-remote/hydrate";
 import InstagramEmbed from "react-instagram-embed";
 import YouTube from "react-youtube";
-import { TwitterTweetEmbed } from "react-twitter-embed";
 import { fetchPlayersContent } from "../../lib/players";
 
 export type Props = {
@@ -20,7 +19,7 @@ export type Props = {
   source: MdxRemote.Source;
 };
 
-const components = { InstagramEmbed, YouTube, TwitterTweetEmbed };
+const components = { InstagramEmbed, YouTube };
 const slugToPlayerContent = (playerContents => {
   let hash = {}
   playerContents.forEach(it => hash[it.slug] = it)

@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import BasicMeta from '../components/meta/BasicMeta';
 import OpenGraphMeta from '../components/meta/OpenGraphMeta';
-import TwitterCardMeta from '../components/meta/TwitterCardMeta';
+import InstagramCardMeta from '../components/meta/InstagramCardMeta';
 import HomeCarousel from '../components/HomeCarousel';
 import { CloudinaryContext } from 'cloudinary-react';
 import config from '../lib/config';
@@ -13,7 +13,7 @@ export default function Index() {
       <Layout>
         <BasicMeta url={'/'} />
         <OpenGraphMeta url={'/'} />
-        <TwitterCardMeta url={'/'} />
+        <InstagramCardMeta url={'/'} />
         <div className="container">
             <h1>
               Hola! Benvinguda a la pàgina oficial de EUF

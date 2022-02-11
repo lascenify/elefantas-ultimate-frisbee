@@ -3,19 +3,15 @@ import Layout from '../../components/Layout';
 import BasicMeta from '../../components/meta/BasicMeta';
 import TeamGenerator from '../../components/TeamGenerator';
 import OpenGraphMeta from '../../components/meta/OpenGraphMeta';
-import TwitterCardMeta from '../../components/meta/TwitterCardMeta';
-import { GeneratorPlayer } from '../../lib/team-generator';
+import InstagramCardMeta from '../../components/meta/InstagramCardMeta';
 
-interface Props {
-  players: GeneratorPlayer[];
-}
-export default function Index({players}: Props) {
+export default function Index() {
   const url = '/team-generator';
   return (
     <Layout>
       <BasicMeta url={url} />
       <OpenGraphMeta url={url} />
-      <TwitterCardMeta url={url} />
+      <InstagramCardMeta url={url} />
       <TeamGenerator></TeamGenerator>
     </Layout>
   );

@@ -5,7 +5,7 @@ import {Image} from 'cloudinary-react';
 export default function HomeCarousel() {
   return (
     <div className="carousel-wrapper">
-      <Carousel infiniteLoop useKeyboardArrows autoPlay >
+      <Carousel infiniteLoop useKeyboardArrows autoPlay showThumbs={false}>
         <div>
           <Image secure="true" publicId="/home/1.jpg" />
         </div>

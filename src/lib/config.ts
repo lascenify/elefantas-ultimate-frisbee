@@ -8,6 +8,7 @@ type Config = {
   readonly matches_per_page: number;
   readonly players_per_page: number;
   readonly twitter_account: string;
+  readonly instagram_account: string;
   readonly github_account: string;
   readonly cloudinary_cloud_name: string;
   readonly cloudinary_upload_preset: string;

@@ -1,5 +1,5 @@
 backend:
-  name: test-repo
+  name: git-gateway
   branch: master
 media_folder: public/images
 public_folder: /images
@@ -35,8 +35,8 @@ collections:
               label: Keyword
               name: keyword
               widget: "string"
-          - label: "Twitter account"
-            name: "twitter_account"
+          - label: "Instagram account"
+            name: "instagram_account"
             widget: "string"
           - label: "GitHub account"
             name: "github_account"
@@ -90,62 +90,3 @@ collections:
         name: "description"
         widget: "string"
         required: false
-
-  - name: "matches"
-    label: "Partidos"
-    label_singular: "Partido"
-    folder: "content/matches/"
-    extension: "mdx"
-    format: "frontmatter"
-    create: true
-    slug: "{{slug}}"
-    identifier_field: slug
-    summary: "{{date}}"
-    fields:
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-        hint: "The part of a URL identifies the match"
-      - label: "Fecha del partido"
-        name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        dateFormat: "YYYY-MM-DD"
-        timeFormat: false
-      - label: Autor de la crónica
-        name: "author"
-        widget: relation
-        collection: "meta"
-        file: "authors"
-        searchFields:
-          - "authors.*.name"
-        displayFields:
-          - "authors.*.name"
-        valueField: "authors.*.slug"
-      - label: Crónica
-        name: "body"
-        widget: "markdown"
-        required: false
-      - label: Equipo rojo
-        name: "redTeam"
-        widget: "object"
-        required: false
-        fields:
-          - label: "Jugadoras"
-            name: "players"
-            widget: "markdown"
-          - label: "Anotaciones"
-            name: "goals"
-            widget: "number"
-      - label: Equipo azul
-        name: "blueTeam"
-        widget: "object"
-        required: false
-        fields:
-          - label: "Jugadoras"
-            name: "players"
-            widget: "markdown"
-          - label: "Anotaciones"
-            name: "goals"
-            widget: "number"
-

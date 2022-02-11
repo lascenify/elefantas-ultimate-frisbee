@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Layout from "../../../components/Layout";
 import BasicMeta from "../../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
-import TwitterCardMeta from "../../../components/meta/TwitterCardMeta";
+import InstagramCardMeta from "../../../components/meta/InstagramCardMeta";
 import config from "../../../lib/config";
 import { countPlayers, listPlayersContent, PlayerContent } from "../../../lib/players";
 import PlayerList from "../../../components/PlayerList";
@@ -21,7 +21,7 @@ export default function Page({ players, pagination, page }: Props) {
     <Layout>
       <BasicMeta url={url} />
       <OpenGraphMeta url={url} />
-      <TwitterCardMeta url={url}/>
+      <InstagramCardMeta url={url}/>
       <PlayerList players={players} pagination={pagination} />
     </Layout>
   );

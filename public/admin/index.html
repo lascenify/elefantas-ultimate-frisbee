@@ -16,21 +16,6 @@
       "https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap"
     );
     CMS.registerPreviewStyle("/styles/content.module.css");
-    var MatchPreview = createClass({
-      render: function () {
-        var entry = this.props.entry;
-        var date = entry.getIn(["data", "date"]);
-        return h(
-          "div", {
-            className: "content"
-          },
-          h("h1", {}, entry.getIn(["data", "title"])),
-          h("time", {}, entry.getIn(["data", "date"])),
-          h("div", {}, this.props.widgetFor("body"))
-        );
-      },
-    });
-    CMS.registerPreviewTemplate("matches", MatchPreview);
 
   </script>
 </body>
