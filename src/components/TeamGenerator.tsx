@@ -8,8 +8,14 @@ import { Player } from "../lib/players";
 export default class TeamGenerator extends React.Component {
 
   showResults = false;
-  blueTeamLineUp = {};
-  redTeamLineUp = {};
+  blueTeamLineUp = {
+    color: "lightblue",
+    squad: {}
+  };
+  redTeamLineUp = {
+    color: "red",
+    squad: {}
+  };
 
   constructor(props) {
     super(props);
@@ -26,7 +32,7 @@ export default class TeamGenerator extends React.Component {
   }
 
   handleClick(event) {
-    const { redTeam, blueTeam } = generateTeams(this.state.players);
+    const { redTeam, blueTeam } = generateTeams(this.state['players']);
     this.generateLineUpTeams(redTeam, blueTeam);
     this.setState({ redTeam, blueTeam});
     this.showResults = true;
@@ -56,11 +62,11 @@ export default class TeamGenerator extends React.Component {
   }
 
   addPlayer(selectedPlayer: GeneratorPlayer) {
-    this.setState({ players: [...this.state.players, selectedPlayer]});
+    this.setState({ players: [...this.state['players'], selectedPlayer]});
   }
 
   removePlayer(selectedPlayer: GeneratorPlayer) {
-    let players: GeneratorPlayer[] = this.state.players;
+    let players: GeneratorPlayer[] = this.state['players'];
     players = players.filter((player) => player.id !== selectedPlayer.id);
     this.setState({ players });
   }
@@ -79,7 +85,7 @@ export default class TeamGenerator extends React.Component {
               </div>
             ))}
         </div>
-        {this.state.players?.length >= 6 ? <button className={"button"} onClick={this.handleClick}>Generar equipos! </button> : null}
+        {this.state['players']?.length >= 6 ? <button className={"button"} onClick={this.handleClick}>Generar equipos! </button> : null}
         { this.showResults ?
           <div className={"result"}>
             <SoccerLineUp
