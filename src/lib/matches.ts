@@ -101,7 +101,6 @@ export function listMatchContent(
 }
 
 export function getMatchLineUp(players: Player[]): Squad {
-  console.log("equipoooo", players)
   switch (players?.length) {
     case 3:
       return {

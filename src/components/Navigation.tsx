@@ -26,6 +26,11 @@ export default function Navigation() {
               <a className={router.pathname.startsWith('/players') ? 'active' : null}>jugadoras</a>
             </Link>
           </li>
+          <li>
+            <Link href="/team-generator">
+              <a className={router.pathname.startsWith('/team-generator') ? 'active' : null}>generador de equipos</a>
+            </Link>
+          </li>
         </ul>
         <style jsx>
           {`
