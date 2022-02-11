@@ -19,7 +19,7 @@ export default function PlayerList({ players, pagination }: Props) {
       <div className={"container"}>
         <div className={"headerContainer"}>
         <Image secure="true" className={"image"} width="200" responsive cloudName={cloudinary_cloud_name}  uploadPreset={cloudinary_upload_preset} publicId="/logo.png" />
-        <h2> La millor gent, el millor post-partit, els pitjors esguinces.
+        <h2> La millor gent, el millor post-partit.
           <br/>
           <span className="fancy"> Elefantas, </span>ara més animals que mai!</h2>
 
@@ -42,22 +42,39 @@ export default function PlayerList({ players, pagination }: Props) {
         />
         <style jsx>{`
           .container {
-            width: 100%;
-            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
           }
           .headerContainer{
             display: flex;
             flex-direction: row;
             align-items: center;
           }
-          .playersContainer {
 
+          @media only screen and (max-width: 500px) {
+            .headerContainer {
+              flex-direction:column;
+            }
+
+          }
+          .playersContainer {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-gap: 2.5rem;
-            grid-auto-rows: minmax(100px, auto);
+            grid-auto-rows: minmax(50px, auto);
             margin: 0 auto;
             max-width: 1200px;
+          }
+          @media only screen and (max-width: 500px) {
+          .playersContainer {
+            display: grid;
+            width: 100%;
+            margin: 0 auto;
+            grid-template-columns: 1fr;
+            grid-gap: 2.5rem;
+          }
+
           }
           ul {
             margin: 0;

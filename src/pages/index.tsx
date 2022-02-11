@@ -30,6 +30,7 @@ export default function Index() {
             align-items: center;
             flex-direction: column;
             padding-left: 2rem;
+            padding-right: 2rem;
           }
           h1 {
             font-size: 2.5rem;
